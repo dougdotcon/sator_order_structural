@@ -333,7 +333,7 @@
     </p>
 
     <p>
-        A naive application of Burnside's Lemma suggests that the number of orbits might be roughly bounded below by $n^2 / |G|$, implying $\kappa \ge 1/|G|$. However, computational evaluation over various finite groups demonstrates this is a weak assumption. For example, specific instances like $\mathbb{Z}_2 \times \mathbb{Z}_2$ (acting via transposition and horizontal reflection) achieve $\kappa = 0.24 < 1/4$ at $n=5$. Therefore, the specific geometric topology of the fixed points controls compression to a greater degree than the standalone group order.
+        A naive application of Burnside-style counting suggests that the number of orbits might be bounded below by $n^2 / |G|$, implying $\kappa \ge 1/|G|$. However, computational evaluation over various finite groups demonstrates this is a weak assumption. For example, specific instances like $\mathbb{Z}_2 \times \mathbb{Z}_2$ (acting via transposition and horizontal reflection) achieve $\kappa = 0.24 < 1/4$ at $n=5$. This refutes the naive bound inspired by Burnside-style orbit counting, not Burnside's lemma itself. Therefore, the specific geometric topology of the fixed points controls compression to a greater degree than the standalone group order.
     </p>
 
     <!-- ─── SECTION IV ─── -->
@@ -443,7 +443,7 @@
     </table>
 
     <div class="theorem-box">
-        <strong>Theorem 1 (Orbital Predictor).</strong> Across our evaluations, $d_{\min}^{\mathrm{orb}}$ acts as the principal tuning parameter for system coherence. It explicitly dictates structural recovery capability superior to simple dimensional metrics.
+        <strong>Empirical Finding 1 (Orbital Predictor).</strong> Across the evaluated finite group actions, $d_{\min}^{\mathrm{orb}}$ is the strongest observed predictor of baseline-corrected structural recovery. It predicts structural recovery capability better than standalone group order metrics.
     </div>
 
     <!-- ─── SECTION VIII ─── -->
