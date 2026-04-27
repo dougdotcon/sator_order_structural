@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Symmetry as a Universal Structural Law: From the Sator Square to Fundamental Physics</title>
+    <title>Orbit-Induced Redundancy in Finite Symbolic Systems</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
@@ -250,17 +250,6 @@
         ul, ol { margin: 0.5rem 0; padding-left: 1.2rem; }
         li { margin-bottom: 0.3rem; font-size: 9.5pt; }
 
-        .result-tag {
-            display: inline-block;
-            background: #000;
-            color: #fff;
-            font-size: 7pt;
-            font-family: 'Courier New', monospace;
-            padding: 1px 5px;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.3rem;
-        }
-
         a { color: #000; text-decoration: underline; }
 
         .doi-badge {
@@ -290,8 +279,7 @@
     <div class="doi-badge">Tamesis Research Program &mdash; Phase 4 &mdash; 2026</div>
 
     <header>
-        <h1>Symmetry as a Universal Structural Law:<br>
-            Seven Research Lines from the Sator Square to Fundamental Physics</h1>
+        <h1>Orbit-Induced Redundancy in Finite Symbolic Systems</h1>
         <div class="authors">Douglas H. M. Fulber</div>
         <div class="affiliations">Universidade Federal do Rio de Janeiro, Rio de Janeiro, Brazil</div>
         <div class="date">(Dated: April 27, 2026)</div>
@@ -299,502 +287,197 @@
 
     <div class="abstract">
         <span class="abstract-title">Abstract</span>
-        We present a generalization program stemming from the formal characterization of the Sator Square as a symmetry-constrained symbolic structure under the Klein four-group $G \cong \mathbb{Z}_2 \times \mathbb{Z}_2$. The central pattern identified&mdash;symmetry induces redundancy, which induces informational invariance and robustness under noise&mdash;is systematically escalated across seven research lines (RL1&ndash;RL7), ranging from combinatorics to thermodynamics and holography. Computational experiments (EXP-08 to EXP-15) over 13 finite groups reveal a universal structural law: the minimum non-trivial orbit size $d_{\min}^{\mathrm{orb}}(G)$ predicts simultaneously the passive recovery rate $\rho(t)$, the coherence time $t^*$, the information action $\mathcal{A}[M,G]$, and the compression ratio $\kappa(G,n)$, with correlations in the range $|r| \in [0.82, 0.87]$. We further establish that all 13 tested groups produce entropy-invariant fixed-point spaces ($\mathcal{F}$-membership rate $= 100\%$), that the information action $\mathcal{A}[M,G] = (n^2 - |\mathrm{orbits}(G)|)\cdot\log_2\sigma$ is an exact identity, and that the Sator compression ratio $\kappa = 0.36$ formally corresponds to $\kappa_{\mathrm{holo}}(N=3) = 1/3$ in the AdS/CFT holographic analogy.
+        We assert that the action of a finite symmetry group $G$ over a symbolic grid $\Sigma^{n^2}$ directly induces structural redundancy, dimensional compression, reading-direction invariance, and passive error-recovery capabilities, generalizing properties historically observed in the Sator Square. We formalize these mechanisms over 13 finite groups and demonstrate that the magnitude of redundancy and robustness is fundamentally governed by $d_{\min}^{\mathrm{orb}}(G)$, the size of the smallest non-trivial orbit, rather than the overall group order $|G|$. We prove an exact identity for the information action $\mathcal{A}[M,G]$ and introduce non-trivial transition entropy to distinguish structurally rigid systems from weakly constrained ones. We measure passive structure recovery under an Isfet-Ma'at noise model, demonstrating empirical structural benefit against a trivial $(n^2-t)/n^2$ baseline. Finally, we frame the Sator Square not as an isolated mathematical anomaly, but as a minimum-complexity historical candidate belonging to this rigorous class of orbit-constrained structures.
     </div>
 
     <!-- ─── SECTION I ─── -->
-    <h2>I. Overview and Motivation</h2>
-
-    <h3>I.1 From the Sator Square to a General Program</h3>
+    <h2>I. Introduction and Motivation</h2>
 
     <p class="no-indent">
-        The Phase 1&ndash;3 investigation (Fulber 2026a) established the Sator Square as a formally
-        characterized symmetry-constrained symbolic structure under $G \cong \mathbb{Z}_2 \times \mathbb{Z}_2$.
-        The key finding was that geometric symmetry alone induces three independent consequences:
-        (i) dimensional compression ($26^{25} \to 26^9$), (ii) directional entropy invariance
-        ($|\Delta H_{\mathrm{dir}}| < 10^{-15}$ bits), and (iii) passive error recovery
-        ($\rho(t=1) = 98.8\%$) without any active encoding mechanism.
+        When an informational space is constrained by symmetry, its degrees of freedom are drastically reduced. Instead of evaluating independent properties, any localized analysis observes facets of a globally locked structure. In linguistic and historical contexts, the Sator Square ($5 \times 5$ Latin word square) operates under such a robust geometric symmetry that reading operations from multiple origins yield the identical token sequence.
     </p>
 
     <p>
-        This pattern is the starting point for the present program. The question is not
-        <em>what is the Sator Square?</em>&mdash;that is answered. The question is:
-        <em>is this pattern unique to the Sator, or does it reflect a universal structural law?</em>
+        The objective of this paper is to abstract the <em>mechanism</em> of the Sator Square from its historical context and propose a formal generalization: <em>Geometric symmetry induces orbital redundancy, orbital redundancy induces informational invariance, and informational invariance offers passive protection against noise.</em>
     </p>
 
-    <h3>I.2 The Pattern in Formal Terms</h3>
-
-    <p class="no-indent">
-        Let $G$ be a finite group acting on $[n]^2$. Define $\mathrm{Fix}(G) = \{M \in \Sigma^{n^2}
-        : g(M) = M\;\forall g \in G\}$. The pattern established by the Sator program is:
+    <p>
+        We systematically formalize the actions of finite groups (such as $\{e\}$, $\mathbb{Z}_2$, $\mathbb{Z}_4$, the Klein four-group, $D_4$, and $D_8$) on a square grid. We measure how these abstract symmetries collapse the entropy of the matrices, force invariance under transition metrics, and provide robust structural recovery purely via topological constraints, without invoking active classical error-correction mechanisms.
     </p>
-
-    <div class="master-equation">
-        $$\text{geometric symmetry } G \;\Longrightarrow\;
-        \underbrace{|\mathrm{orbits}(G)|}_{\text{compression}} \;\Longrightarrow\;
-        \underbrace{H_d(M) = \mathrm{const}}_{\text{entropy invariance}} \;\Longrightarrow\;
-        \underbrace{\rho(t) \gg \rho_{\mathrm{random}}(t)}_{\text{robustness}}$$
-    </div>
-
-    <p class="no-indent">
-        The Phase 4 program (this paper) asks whether this chain holds universally across all
-        finite groups, and what happens at each link of the chain when $G$ varies.
-    </p>
-
-    <div class="remark-box">
-        <p><strong>Notation.</strong>
-        Throughout, $n = 5$, $\Sigma = $ Latin alphabet ($|\Sigma| = 26$), $[n]^2 = \{(i,j):
-        0 \le i,j \le n-1\} = $ grid of positions. The Klein group $G_0 = \{e, T, R, TR\}$
-        (with $T$ = transpose, $R$ = 180&deg; rotation) is the Sator group, denoted $G_0 \cong
-        \mathbb{Z}_2\times\mathbb{Z}_2$. All experiments used $N_{\mathrm{trials}} = 200$
-        independent samples per data point.</p>
-    </div>
 
     <!-- ─── SECTION II ─── -->
-    <h2>II. The Seven Research Lines</h2>
+    <h2>II. Finite Groups on Symbolic Grids</h2>
+
+    <h3>II.1 Definitions and Orbits</h3>
 
     <p class="no-indent">
-        Seven research lines escalate the Sator pattern from combinatorics toward fundamental physics,
-        ordered by tractability. Table I summarizes the domain, core question, and status of each line.
-    </p>
-
-    <table>
-        <caption>Table I. The seven research lines of Phase 4, ordered by tractability. Status as of April 27, 2026.</caption>
-        <tr>
-            <th>RL</th>
-            <th>Title</th>
-            <th>Domain</th>
-            <th>Core question</th>
-            <th>EXP</th>
-            <th>Status</th>
-        </tr>
-        <tr><td>RL1</td><td>Physical-Informational Reversibility</td><td>Thermodynamics</td><td>Does $H(\mathcal{S},t)$ remain stable while $H(\mathcal{U},t)$ grows?</td><td>11</td><td>Complete</td></tr>
-        <tr><td>RL2</td><td>Symmetry-Protected Information</td><td>QEC / Topology</td><td>Does $d_{\min}^{\mathrm{orb}}$ predict passive recovery $\rho$?</td><td>10</td><td>Complete</td></tr>
-        <tr><td><strong>RL3</strong></td><td><strong>Universal Entropy Invariance</strong></td><td>Combinatorics</td><td>Is $\mathrm{Fix}(G) \subset \mathcal{F}$ for all $G$?</td><td>08</td><td><strong>Complete</strong></td></tr>
-        <tr><td>RL4</td><td>Variational Information Principle</td><td>Math physics</td><td>Is $\mathcal{A}[M,G]$ an exact identity?</td><td>12</td><td>Complete</td></tr>
-        <tr><td>RL5</td><td>Local Arrow of Time</td><td>QM / TDTR</td><td>Does $d_{\min}^{\mathrm{orb}}$ predict coherence time $t^*$?</td><td>13</td><td>Complete</td></tr>
-        <tr><td>RL6</td><td>Fundamental Compression Limit</td><td>Information theory</td><td>What is the true lower bound on $\kappa(G,n)$?</td><td>09</td><td>Complete</td></tr>
-        <tr><td>RL7</td><td>Symbolic Codes and Holography</td><td>QG / Holography</td><td>Does $\kappa_{\mathrm{sym}} \approx \kappa_{\mathrm{holo}}(N)$?</td><td>14</td><td>Complete (analogy)</td></tr>
-    </table>
-
-    <!-- ─── SECTION III ─── -->
-    <h2>III. Entropy Invariance (RL3 / EXP-08)</h2>
-
-    <h3>III.1 The Class $\mathcal{F}$</h3>
-
-    <p class="no-indent">
-        Define the class of omnidirectionally entropy-invariant matrices:
-        $$\mathcal{F} = \{ M \in \Sigma^{n \times n} : H_d(M) = H_{d'}(M) \;\;\forall\, d, d' \in \mathcal{D} \}$$
-        where $\mathcal{D}$ is the set of four canonical linear reading directions. The Sator Square
-        (Phase 3) establishes that $\mathrm{Fix}(G_0) \subset \mathcal{F}$. The RL3 question is
-        whether this is a universal property of all $\mathrm{Fix}(G)$.
-    </p>
-
-    <div class="theorem-box">
-        <strong>Theorem RL3-T1 (Empirical, EXP-08).</strong>
-        For all 13 finite groups $G$ tested on $[5]^2$, including $\{e\}$, all five $\mathbb{Z}_2$
-        variants, the Klein four-group, $\mathbb{Z}_4$, $D_4$, and $D_8$:
-        $$\mathrm{Fix}(G) \subset \mathcal{F} \qquad \text{with} \quad \overline{\mathrm{Var}(H_d)} < 10^{-31} \;\text{bits}^2$$
-        The membership rate in $\mathcal{F}$ is $13/13 = 100\%$.
-    </div>
-
-    <p>
-        This result strongly suggests that $\mathcal{F}$-membership is a universal consequence of
-        any symmetry group action on a symbolic grid&mdash;not a special property of the Sator group.
-        The variance bound $< 10^{-31}$ is tighter than double machine precision, indicating true
-        zero variance rather than numerical artifact.
-    </p>
-
-    <figure>
-        <img src="research_lines/figures/RL3/08a_entropy_invariance.png"
-             alt="Entropy Invariance Analysis for 13 Groups">
-        <figcaption>
-            <strong>Figure 1.</strong> (EXP-08) Left: $\overline{\mathrm{Var}(H_d)}$ per group on
-            $\log$-scale; all values are below $\varepsilon = 10^{-10}$ (green threshold), supporting
-            $\mathcal{F}$-membership for all groups. Center: $\kappa$ vs variance scatter plot,
-            showing no correlation between compression ratio and entropy invariance.
-            Right: Orbit count per group. All figures use $n=5$, $|\Sigma|=26$.
-        </figcaption>
-    </figure>
-
-    <figure>
-        <img src="research_lines/figures/RL3/08b_orbit_maps.png"
-             alt="Orbit Maps for All Groups">
-        <figcaption>
-            <strong>Figure 2.</strong> (EXP-08) Orbit-structure maps for all 13 tested groups.
-            Each color represents one orbit. Green border = group belongs to $\mathcal{F}$;
-            all 13 show green borders, confirming universal $\mathcal{F}$-membership.
-        </figcaption>
-    </figure>
-
-    <!-- ─── SECTION IV ─── -->
-    <h2>IV. The Information Action and Variational Principle (RL4 / EXP-12)</h2>
-
-    <h3>IV.1 Definition and Exact Identity</h3>
-
-    <p class="no-indent">
-        Define the <em>information action</em> of group $G$ on an $n \times n$ symbolic space:
+        Let $[n]^2 = \{(i,j): 0 \le i,j < n\}$ represent the coordinate grid, and let $\Sigma$ be a finite alphabet of symbols ($|\Sigma| = 26$). A matrix is a mapping $M: [n]^2 \to \Sigma$. We consider the action of a finite group of symmetries $G \curvearrowright [n]^2$ representing permutations of the grid coordinates (such as transpositions and rotations). 
     </p>
 
     <div class="definition-box">
-        <strong>Definition 1 (Information Action).</strong>
-        $$\mathcal{A}[M, G] = H(M) - H(M \mid G) = (n^2 - |\mathrm{orbits}(G)|) \cdot \log_2 |\Sigma|$$
-        This represents the entropy (in bits) eliminated from the system by imposing the symmetry $G$.
-    </div>
-
-    <div class="theorem-box">
-        <strong>Theorem RL4-T1 (EXP-12).</strong> The identity
-        $\mathcal{A}[M, G] = (n^2 - |\mathrm{orbits}(G)|)\cdot\log_2\sigma$
-        holds exactly for all 14 tested groups ($n=5$, $\sigma=26$). Specifically:
-        <ul>
-            <li>Trivial group: $\mathcal{A} = 0$ bits (no constraints, no reduction)</li>
-            <li>Klein $G_0$ (Sator): $\mathcal{A} = 16\cdot\log_2 26 = 75.21$ bits</li>
-            <li>Maximum ($D_4$, $D_8$, etc.): $\mathcal{A} = 19\cdot\log_2 26 = 89.31$ bits</li>
-        </ul>
-        The action is maximized by groups with the fewest orbits, <em>not</em> by groups of highest order.
+        <strong>Definition 1 (Fixed-Point Space and Orbits).</strong> 
+        We denote the fixed-point subspace as $\mathrm{Fix}(G) = \{ M \in \Sigma^{n^2} : g(M) = M \;\forall g \in G \}$. The action of $G$ partitions $[n]^2$ into disjoint equivalence classes called <em>orbits</em>. The total number of independent symbol assignments required to construct any $M \in \mathrm{Fix}(G)$ is exactly $k = |\mathrm{orbits}(G)|$.
     </div>
 
     <p>
-        The Sator group achieves 64.0% of the maximum possible action, while groups of order 8 and 16
-        with only 6 orbits achieve 76.0%. This establishes the Sator as an economical but
-        non-maximal point in the information action landscape.
+        A matrix $M$ belonging to $\mathrm{Fix}(G)$ is highly redundant. If $\mathcal{O} \in \mathrm{orbits}(G)$ has $|\mathcal{O}| > 1$, a single symbol choice populates multiple coordinates simultaneously. The structure behaves as a rigidly constrained lattice.
+    </p>
+
+    <!-- ─── SECTION III ─── -->
+    <h2>III. Orbit-Induced Compression</h2>
+
+    <h3>III.1 Unconstrained vs Symmetric Entropies</h3>
+
+    <p class="no-indent">
+        The unconstrained symbolic space possesses volume $|\Sigma|^{n^2}$ and total maximum entropy $H_{\max} = n^2 \log_2|\Sigma|$. Under symmetry $G$, the effective dimension drops to $|\Sigma|^{|\mathrm{orbits}(G)|}$. We define the <em>symmetry compression ratio</em> as $\kappa(G,n) = |\mathrm{orbits}(G)| / n^2$.
+    </p>
+
+    <p>
+        A naive application of Burnside's Lemma suggests that the number of orbits might be roughly bounded below by $n^2 / |G|$, implying $\kappa \ge 1/|G|$. However, computational evaluation over various finite groups demonstrates this is a weak assumption. For example, specific instances like $\mathbb{Z}_2 \times \mathbb{Z}_2$ (acting via transposition and horizontal reflection) achieve $\kappa = 0.24 < 1/4$ at $n=5$. Therefore, the specific geometric topology of the fixed points controls compression to a greater degree than the standalone group order.
+    </p>
+
+    <!-- ─── SECTION IV ─── -->
+    <h2>IV. The Information Action</h2>
+
+    <p class="no-indent">
+        We formalize the entropy lost to structural rigidity via the Information Action.
+    </p>
+
+    <div class="definition-box">
+        <strong>Definition 2 (Information Action).</strong> Let $H(M)$ be the bits required to specify the matrix. The action of group $G$ reduces this uncertainty.
+        $$\mathcal{A}[M, G] = H_{\max} - H(M \mid G) = (n^2 - |\mathrm{orbits}(G)|) \log_2 |\Sigma|$$
+    </div>
+
+    <p>
+        Table I lists the calculated action $\mathcal{A}$ for assorted groups. The action is an exact metric of the "cost" paid in entropy to maintain global symmetry. Interestingly, an increase in $|G|$ does not strictly guarantee maximum action if the operators leave large sections of the grid invariant.
     </p>
 
     <table>
-        <caption>Table II. Information action $\mathcal{A}[M,G]$ for selected groups ($n=5$, $\sigma=26$). (EXP-12)</caption>
+        <caption>Table I. Information Action $\mathcal{A}[M,G]$ and Compression Ratio $\kappa$ ($n=5, \Sigma=26$).</caption>
         <tr>
             <th>Group $G$</th>
             <th>$|G|$</th>
-            <th>Orbits</th>
-            <th>$H(M|G)$ (bits)</th>
+            <th>$|\mathrm{orbits}(G)|$</th>
+            <th>$\kappa$</th>
             <th>$\mathcal{A}$ (bits)</th>
-            <th>$R$</th>
-            <th>$\Delta A\%$</th>
         </tr>
-        <tr><td>Trivial $\{e\}$</td><td>1</td><td>25</td><td>117.51</td><td>0.00</td><td>1.000</td><td>0%</td></tr>
-        <tr><td>$\mathbb{Z}_2$ (T)</td><td>2</td><td>15</td><td>70.51</td><td>47.00</td><td>0.600</td><td>40%</td></tr>
-        <tr><td>$\mathbb{Z}_2$ (R180)</td><td>2</td><td>13</td><td>61.11</td><td>56.41</td><td>0.520</td><td>48%</td></tr>
-        <tr><td><strong>Klein (T, R180) &mdash; Sator</strong></td><td><strong>4</strong></td><td><strong>9</strong></td><td><strong>42.30</strong></td><td><strong>75.21</strong></td><td><strong>0.360</strong></td><td><strong>64%</strong></td></tr>
-        <tr><td>$\mathbb{Z}_4$ (R90)</td><td>4</td><td>7</td><td>32.90</td><td>84.61</td><td>0.280</td><td>72%</td></tr>
-        <tr><td>$D_4$, $D_8$, $\mathbb{Z}_2^3$</td><td>8&ndash;16</td><td>6</td><td>28.20</td><td>89.31</td><td>0.240</td><td>76%</td></tr>
+        <tr><td>Trivial $\{e\}$</td><td>1</td><td>25</td><td>1.00</td><td>0.00</td></tr>
+        <tr><td>$\mathbb{Z}_2$ (T)</td><td>2</td><td>15</td><td>0.60</td><td>47.00</td></tr>
+        <tr><td>Klein $G_0$ (T, R180)</td><td>4</td><td>9</td><td>0.36</td><td>75.21</td></tr>
+        <tr><td>$\mathbb{Z}_4$ (R90)</td><td>4</td><td>7</td><td>0.28</td><td>84.61</td></tr>
+        <tr><td>$D_4$ (R90, T)</td><td>8</td><td>6</td><td>0.24</td><td>89.31</td></tr>
     </table>
 
-    <figure>
-        <img src="research_lines/figures/RL4/12a_action_landscape.png"
-             alt="Information Action Landscape">
-        <figcaption>
-            <strong>Figure 3.</strong> (EXP-12) Left: $\mathcal{A}[M,G]$ per group (yellow = Sator).
-            Center: $\mathcal{A}$ vs group order scatter, color = effective rate $R$.
-            Right: Entropy decomposition $H(M) = H(M|G) + \mathcal{A}$ stacked bar.
-        </figcaption>
-    </figure>
-
     <!-- ─── SECTION V ─── -->
-    <h2>V. Compression Limits (RL6 / EXP-09)</h2>
+    <h2>V. Non-Trivial Entropy Invariance</h2>
 
-    <h3>V.1 The Symmetry Compression Ratio</h3>
+    <h3>V.1 Marginal vs. Transition Entropy</h3>
 
     <p class="no-indent">
-        Define the <em>symmetry compression ratio</em>
-        $\kappa(G,n) = |\mathrm{orbits}(G \curvearrowright [n]^2)| / n^2 \in (0, 1]$.
-        For the Sator group: $\kappa(G_0, 5) = 9/25 = 0.36$.
+        A canonical property of the Sator Square is reading-direction invariance. We generalize this by reading $M \in \mathrm{Fix}(G)$ in standard sequence (e.g., Left-to-Right, Top-to-Bottom). We denote these directional sequences as $\mathcal{D}$.
     </p>
 
     <p>
-        EXP-09 computed $\kappa$ for 15 groups across $n \in \{3,4,5\}$, yielding 45 data points.
-        A key finding was that the conjecture $\kappa(G,n) \geq 1/|G|$ (Burnside lower bound) is
-        violated by certain group actions: specifically, $\mathbb{Z}_2 \times \mathbb{Z}_2$ (T, Rh)
-        achieves $\kappa = 0.24 < 1/4 = 0.25$ at $n = 5$. This refutes the naive Burnside bound
-        and motivates a refined conjecture.
+        Measuring simple marginal Shannon entropy $H_{\text{freq}}$ over these sequences is trivial; by definition, structural transpositions equate rows and columns, leading to a variance $\mathrm{Var}(H_{\text{freq}}) = 0$. This tests nothing beyond the axioms. We introduce a more rigorous metric: <em>transition entropy</em> $H_{\text{trans}}$, measuring the conditional uncertainty of bigrams $H(X_{t+1}|X_t)$.
     </p>
 
-    <div class="remark-box">
-        <p><strong>Remark (Refined Conjecture RL6-C1*).</strong>
-        The appropriate bound is not $1/|G|$ but rather $1/|G| \cdot c_G$, where
-        $c_G$ depends on the fixedpoint set structure of the group action.
-        Identifying the correct $c_G$ is an open problem.</p>
+    <div class="theorem-box">
+        <strong>Observation (Transition Invariance).</strong> While all symmetric matrices exhibit trivial $H_{\text{freq}}$ invariance, only highly structured groups force $H_{\text{trans}}$ invariance.
     </div>
 
+    <p>
+        In EXP-17, groups like $D_4$, $D_8$, and Klein $G_0$ forced $\mathrm{Var}(H_{\text{trans}}) \to 0$, indicating that not only the symbols, but their adjacency structures are rotationally/isotropically locked. Trivial and weak $\mathbb{Z}_2$ groups failed this strict constraint, showing measurable variance across directions. This effectively filters purely mathematically trivial groups from those producing deep topological rigidity.
+    </p>
+
+    <!-- ─── SECTION VI ─── -->
+    <h2>VI. Passive Structural Recovery</h2>
+
+    <h3>VI.1 Isfet/Ma'at Model and the Adjusted Baseline</h3>
+
+    <p class="no-indent">
+        Symmetry induces redundancy capable of withstanding noise. We utilize a targeted corruption model: <em>Isfet</em> corrupts exactly $t$ uniformly selected positions with random replacement overriding symbols. A passive recovery operator, <em>Ma'at</em>, surveys the matrix and replaces each cell with the majority-vote symbol among its formally mandated orbit peers. 
+    </p>
+
+    <p>
+        If no structural relationships exist, the expected fraction of uncorrupted cells forms our baseline: $\rho_{\text{baseline}}(t) = (n^2-t)/n^2$. For the trivial group $\{e\}$ at $t=1$, this evaluates to 96%. To measure true structural benefit, we calculate $\delta\rho(t) = \rho_{\mathrm{Fix}(G)}(t) - \rho_{\text{baseline}}(t)$.
+    </p>
+
     <figure>
-        <img src="research_lines/figures/RL6/09b_kappa_vs_order.png"
-             alt="Compression Ratio vs Group Order">
+        <img src="research_lines/figures/RL2/16a_corrected_baseline.png"
+             alt="True Structural Recovery vs Corruptions">
         <figcaption>
-            <strong>Figure 4.</strong> (EXP-09) $\kappa(G,n)$ vs group order for $n\in\{3,4,5\}$.
-            Dashed curves = Burnside bound $1/|G|$. Points below the dashed curve at the same
-            color violate the naive bound. The Sator group (star) sits $1.44\times$ above the
-            Burnside bound, confirming it is not minimally compressed.
+            <strong>Figure 1.</strong> (EXP-16) Passive structural recovery. Left: raw recovery $\rho(t)$. Center: baseline-corrected structural benefit $\delta\rho(t)$. Note that trivial groups hover near $\delta\rho = 0$, validating the baseline. Highly symmetric groups like $D_4$ attain massive positive benefit.
         </figcaption>
     </figure>
 
-    <!-- ─── SECTION VI ─── -->
-    <h2>VI. Symmetry-Protected Information (RL2 / EXP-10)</h2>
-
-    <h3>VI.1 Generalization of the Passive Recovery Rate</h3>
+    <!-- ─── SECTION VII ─── -->
+    <h2>VII. The Minimum Orbit Distance $d_{\min}^{\mathrm{orb}}$ as a Universal Predictor</h2>
 
     <p class="no-indent">
-        Generalizing EXP-05 (Sator Phase 3), EXP-10 measures the passive recovery rate
-        $\rho(t)$ under the Isfet/Ma&rsquo;at model for 9 distinct finite groups.
+        The resilience of the system is not predicted linearly by the group's order $|G|$ but by its weakest internal linkage. 
+    </p>
+
+    <div class="definition-box">
+        <strong>Definition 3 (Minimum Orbit Distance).</strong> We define the governing structural distance as the size of the smallest non-trivial orbit:
+        $$d_{\min}^{\mathrm{orb}}(G) = \min_{\substack{O \in \mathrm{orbits}(G) \\ |O| > 1}} |O|$$
+    </div>
+
+    <p>
+        Table II summarizes empirical recovery values and $d_{\min}^{\mathrm{orb}}$. Both $D_8$ ($|G|=16$) and $\mathbb{Z}_4$ ($|G|=4$) possess $d_{\min}^{\mathrm{orb}} = 4$, and consequently, both deliver virtually identical structural benefit $\delta\rho \approx +0.038$.
     </p>
 
     <table>
-        <caption>Table III. Recovery rates by group after $t \in \{1, 5\}$ corruptions. (EXP-10, $N_{\mathrm{trials}} = 200$)</caption>
+        <caption>Table II. The $d_{\min}^{\mathrm{orb}}$ parameter vs empirical benefit $\delta\rho(t=1)$.</caption>
         <tr>
             <th>Group $G$</th>
             <th>$|G|$</th>
             <th>$d_{\min}^{\mathrm{orb}}$</th>
-            <th>$\rho(t=1)$</th>
-            <th>$\rho(t=5)$</th>
+            <th>$\delta\rho(t=1)$</th>
         </tr>
-        <tr><td>Trivial $\{e\}$</td><td>1</td><td>1</td><td>96.0%</td><td>80.0%</td></tr>
-        <tr><td>$\mathbb{Z}_2$ (T)</td><td>2</td><td>2</td><td>96.0%</td><td>80.0%</td></tr>
-        <tr><td><strong>Klein (T, R180) &mdash; Sator</strong></td><td><strong>4</strong></td><td><strong>2</strong></td><td><strong>98.4%</strong></td><td><strong>91.5%</strong></td></tr>
-        <tr><td>$\mathbb{Z}_4$ (R90)</td><td>4</td><td>4</td><td>99.8%</td><td>97.9%</td></tr>
-        <tr><td>$D_4$ (R90, T)</td><td>8</td><td>4</td><td>99.8%</td><td>98.3%</td></tr>
-        <tr><td>$D_8$ (R90, T, Rh)</td><td>16</td><td>4</td><td>99.6%</td><td>98.5%</td></tr>
+        <tr><td>Trivial $\{e\}$</td><td>1</td><td>1</td><td>+0.000</td></tr>
+        <tr><td>$\mathbb{Z}_2$ (T)</td><td>2</td><td>2</td><td>-0.002</td></tr>
+        <tr><td>Klein $G_0$</td><td>4</td><td>2</td><td>+0.023</td></tr>
+        <tr><td>$\mathbb{Z}_4$ (R90)</td><td>4</td><td>4</td><td>+0.038</td></tr>
+        <tr><td>$D_4$ (R90, T)</td><td>8</td><td>4</td><td>+0.039</td></tr>
+        <tr><td>$D_8$ (R90, T, Rh)</td><td>16</td><td>4</td><td>+0.038</td></tr>
     </table>
 
-    <p>
-        The key observation is that $d_{\min}^{\mathrm{orb}}$ is a stronger predictor of $\rho$
-        than $|G|$: both $\mathbb{Z}_4$ and $D_4$ have $d_{\min}^{\mathrm{orb}} = 4$ and achieve
-        $\rho(t=1) \geq 99.8\%$, surpassing $D_8$ (order 16) which also has $d_{\min}^{\mathrm{orb}} = 4$.
-        The Sator group, with $d_{\min}^{\mathrm{orb}} = 2$, sits at an intermediate level,
-        confirming the Sator Square as a minimum-complexity viable SPIS (Definition 2).
-    </p>
-
-    <div class="definition-box">
-        <strong>Definition 2 (Symmetry-Protected Information Structure &mdash; SPIS).</strong>
-        A matrix space $\mathrm{Fix}(G)$ is a SPIS if
-        $\rho(t) > \rho_{\mathrm{random}}(t)$ for all $t \in [0, n^2)$, where
-        $\rho_{\mathrm{random}}(t) = (n^2 - t)/n^2$ is the recovery rate without any
-        orbit structure. <em>Conjecture RL2-C1:</em> every non-trivial $\mathrm{Fix}(G)$ is a SPIS.
+    <div class="theorem-box">
+        <strong>Theorem 1 (Orbital Predictor).</strong> Across our evaluations, $d_{\min}^{\mathrm{orb}}$ acts as the principal tuning parameter for system coherence. It explicitly dictates structural recovery capability superior to simple dimensional metrics.
     </div>
-
-    <!-- ─── SECTION VII ─── -->
-    <h2>VII. The Local Arrow of Time (RL5 / EXP-13)</h2>
-
-    <h3>VII.1 Coherence Time $t^*$</h3>
-
-    <p class="no-indent">
-        Let $t^*(\theta)$ denote the smallest $t$ at which $\rho(t) < \theta$. We take $\theta = 0.5$
-        as the primary threshold (local reversibility window) and $\theta = 0.9$ as a secondary
-        (high-fidelity) threshold.
-        Within the TDTR framework (Fulber 2026b), physical regime transitions are globally irreversible
-        (semigroup). RL5 asks: does the $G$-symmetric subsystem maintain local group-reversibility
-        within this global semigroup evolution?
-    </p>
-
-    <table>
-        <caption>Table IV. Coherence times $t^*$ by group. (EXP-13, $N_{\mathrm{trials}} = 200$)</caption>
-        <tr>
-            <th>Group $G$</th><th>$|G|$</th><th>$d_{\min}^{\mathrm{orb}}$</th>
-            <th>$t^*(50\%)$</th><th>$t^*(90\%)$</th>
-        </tr>
-        <tr><td>Trivial $\{e\}$</td><td>1</td><td>1</td><td>13</td><td>3</td></tr>
-        <tr><td>$\mathbb{Z}_2$ (T or R180)</td><td>2</td><td>2</td><td>13</td><td>3</td></tr>
-        <tr><td><strong>Klein (T, R180) &mdash; Sator</strong></td><td><strong>4</strong></td><td><strong>2</strong></td><td><strong>16</strong></td><td><strong>6</strong></td></tr>
-        <tr><td>$\mathbb{Z}_4$ (R90)</td><td>4</td><td>4</td><td>17</td><td>9</td></tr>
-        <tr><td>$D_4$ (R90, T)</td><td>8</td><td>4</td><td>19</td><td>11</td></tr>
-        <tr><td>$D_8$ (R90, T, Rh)</td><td>16</td><td>4</td><td>18</td><td>10</td></tr>
-    </table>
-
-    <p>
-        Notably, $t^*$ saturates at $|G| \approx 8$&mdash;adding more group elements beyond 8
-        does not significantly extend the coherence window. The primary predictor is
-        $d_{\min}^{\mathrm{orb}}$: moving from $d=2$ to $d=4$ extends $t^*(90\%)$ from 3&ndash;6
-        to 9&ndash;11 corruptions. This is the RL5 analog of a topological protection gap.
-    </p>
 
     <!-- ─── SECTION VIII ─── -->
-    <h2>VIII. The Universal Structural Invariant (EXP-15)</h2>
-
-    <h3>VIII.1 $d_{\min}^{\mathrm{orb}}$ as the Fundamental Parameter</h3>
+    <h2>VIII. The Sator Square as a Minimum-Complexity Historical Example</h2>
 
     <p class="no-indent">
-        The central finding of Phase 4 is that a single quantity predicts all four structural metrics
-        across all research lines. Define:
+        The Sator Square is governed by the Klein group $G_0$ representing simultaneous transpose equality and 180&deg; rotational symmetry. Sitting at $d_{\min}^{\mathrm{orb}} = 2$, it is neither maximally compressed nor maximally error-resilient. Rather, it represents the <em>minimum complexity threshold</em> at which orbit-induced redundancy manifests non-trivial structural benefit and absolute invariance metrics.
     </p>
-
-    <div class="definition-box">
-        <strong>Definition 3 (Minimum Orbit Distance).</strong>
-        For a group $G$ acting on $[n]^2$:
-        $$d_{\min}^{\mathrm{orb}}(G) = \min_{\substack{O \in \mathrm{orbits}(G) \\ |O| > 1}} |O|$$
-        This is the cardinality of the smallest non-trivial orbit&mdash;the minimum number of
-        positions that must be simultaneously modified to move between two consistent
-        symmetry-equivalent configurations.
-    </div>
-
-    <div class="theorem-box">
-        <strong>Theorem 5 (Universal Structural Law, EXP-15).</strong>
-        The quantity $d_{\min}^{\mathrm{orb}}(G)$ is the strongest predictor of all four
-        structural metrics across RL1&ndash;RL6, with the following Pearson correlations:
-        $$\mathrm{corr}(d_{\min}^{\mathrm{orb}},\; \rho(t=1)) = +0.868$$
-        $$\mathrm{corr}(d_{\min}^{\mathrm{orb}},\; t^*) = +0.868$$
-        $$\mathrm{corr}(d_{\min}^{\mathrm{orb}},\; \mathcal{A}[M,G]) = +0.825$$
-        $$\mathrm{corr}(d_{\min}^{\mathrm{orb}},\; \kappa(G,n)) = -0.825$$
-        Higher $d_{\min}^{\mathrm{orb}}$ implies simultaneously: better passive recovery,
-        longer coherence time, greater information action, and lower compression ratio.
-    </div>
 
     <p>
-        The uniform magnitude $|r| \in [0.82, 0.87]$ across four independent metrics from four distinct
-        research lines is not a coincidence. It reflects a single underlying mechanism: the minimum orbit
-        size bounds the number of corruptions required to push the system out of its symmetric subspace,
-        which simultaneously determines all robustness properties.
+        This realization demystifies its existence over linguistic history: it is the simplest topological construction that supports simultaneous multi-directional reading coherence without requiring complex non-abelian group symmetries, which would be insurmountably sparse in natural language lexicons.
     </p>
-
-    <figure>
-        <img src="research_lines/figures/SYNTHESIS/15_universal_invariant.png"
-             alt="Universal Invariant Synthesis Figure">
-        <figcaption>
-            <strong>Figure 5.</strong> (EXP-15) Synthesis figure. Top row: $d_{\min}^{\mathrm{orb}}$
-            vs $\rho(t=1)$ (RL2), $t^*$ (RL5), and $\mathcal{A}$ (RL4). Bottom row:
-            $d_{\min}^{\mathrm{orb}}$ vs $\kappa$ (RL6), joint $\rho$&ndash;$t^*$ scatter (color = $\mathcal{A}$),
-            and group-mean summary bars. The Sator Square (star) appears at $d_{\min}^{\mathrm{orb}} = 2$
-            in all panels&mdash;the minimum tractable threshold.
-        </figcaption>
-    </figure>
-
-    <div class="remark-box">
-        <p><strong>Remark (Sator as Calibration Point).</strong>
-        The Sator Square, with $d_{\min}^{\mathrm{orb}} = 2$, is the smallest non-trivial
-        point on the universal invariant curve. It is neither maximally compressed ($\kappa = 0.36$
-        vs min $0.24$) nor maximally protected ($\rho(1) = 98.4\%$ vs $99.9\%$), but it is the
-        simplest structure where all these properties first appear. This explains why it emerged
-        naturally in human language: it sits at the minimum complexity threshold for the
-        phenomenon to be lexically realizable.</p>
-    </div>
 
     <!-- ─── SECTION IX ─── -->
-    <h2>IX. Physical Connections (RL1, RL5 / EXP-11, EXP-13)</h2>
-
-    <h3>IX.1 Local vs. Global Entropy Stability (RL1)</h3>
+    <h2>IX. Discussion and Future Extensions</h2>
 
     <p class="no-indent">
-        EXP-11 models a symbolic universe $\mathcal{U}$ undergoing random-walk evolution (each step:
-        $k=3$ random symbol changes). A symmetric subsystem $\mathcal{S} = \mathrm{Fix}(G)$ is maintained
-        at each step via Ma&rsquo;at projection. The key measurement is the temporal standard deviation
-        of $H(\mathcal{S}, t)$ vs $H(\mathcal{U}, t)$ after warmup ($t > 10$).
+        This computational and topological framework presents an abstraction of redundancy applicable to domains far removed from symbolic word matrices. While current evaluations deal strictly with the properties of arrays over a finite alphabet, future developments should extend these investigations into localized quantum physical structures and holography analogs.
     </p>
 
     <p>
-        Results show that the Klein group (Sator) achieves the lowest local entropy fluctuation
-        (std $= 0.0293$) among all constrained groups, while the unconstrained system has
-        std $= 0.0231$. The ratio $\mathrm{std}(H_S)/\mathrm{std}(H_U) = 1.22$ for the Sator
-        group confirms that the symmetric subspace absorbs perturbations differently
-        from the unconstrained evolution&mdash;consistent with RL1-C1.
+        Particularly, under speculative physical analogies, $d_{\min}^{\mathrm{orb}}$ directly echoes the role of topological protection layers in stabilizer codes, and the structural density metric $\kappa$ mirrors boundary-bulk ratios inherent to discrete lattice variants of AdS/CFT holography. Validating any physical correspondence demands precise falsifiable mappings representing our next investigative phase.
     </p>
-
-    <figure>
-        <img src="research_lines/figures/RL1/11a_entropy_evolution.png"
-             alt="Entropy Evolution: Local vs Global">
-        <figcaption>
-            <strong>Figure 6.</strong> (EXP-11) Left: $H(U,t)$ (dashed) vs $H(S,t)$ (solid) over
-            $T=100$ steps for 4 groups. Center: Entropy gap $\Delta H = H(U,t) - H(S,t)$; positive
-            values confirm that $S$ is more ordered than $U$ throughout. Right: Temporal fluctuation
-            $\mathrm{std}(H)$ for local $S$ and global $U$ per group.
-        </figcaption>
-    </figure>
-
-    <!-- ─── SECTION X ─── -->
-    <h2>X. Holographic Analogy (RL7 / EXP-14)</h2>
-
-    <div class="remark-box">
-        <p><strong>Warning.</strong> All claims in this section are formal analogies, not physical assertions.
-        No holographic statement is made without a falsifiable prediction being formulated first.</p>
-    </div>
-
-    <h3>X.1 The Correspondence</h3>
-
-    <p class="no-indent">
-        In a discrete lattice model of AdS$_{d+1}$/CFT$_d$ with $N$ sites along each spatial
-        dimension, the holographic compression ratio is:
-        $$\kappa_{\mathrm{holo}}(N, d) = \frac{N^{d-1}}{N^d} = \frac{1}{N}$$
-        (boundary sites / bulk sites). EXP-14 identifies, for each symbolic group $G$,
-        the holographic scale $N^*$ minimizing $|\kappa_{\mathrm{sym}}(G,5) - 1/N^*|$.
-    </p>
-
-    <table>
-        <caption>Table V. Holographic correspondence table. (EXP-14) All entries are formal analogies.</caption>
-        <tr>
-            <th>Group</th>
-            <th>$\kappa_{\mathrm{sym}}$</th>
-            <th>Best $N^*$</th>
-            <th>$\kappa_{\mathrm{holo}}(N^*)$</th>
-            <th>$|\Delta\kappa|$</th>
-        </tr>
-        <tr><td>$\mathbb{Z}_2$ (R180)</td><td>0.52</td><td>2</td><td>0.500</td><td>0.020</td></tr>
-        <tr><td><strong>Klein (Sator)</strong></td><td><strong>0.36</strong></td><td><strong>3</strong></td><td><strong>0.333</strong></td><td><strong>0.027</strong></td></tr>
-        <tr><td>$\mathbb{Z}_4$ (R90)</td><td>0.28</td><td>4</td><td>0.250</td><td>0.030</td></tr>
-        <tr><td>$D_4$, $D_8$, $\mathbb{Z}_2^3$</td><td>0.24</td><td>4</td><td>0.250</td><td>0.010</td></tr>
-    </table>
-
-    <p>
-        The Sator $\kappa = 0.36$ corresponds to $N^* = 3$, i.e., the holographic scale of
-        AdS$_3$ with lattice size 3. The $D_4$/$D_8$ groups ($\kappa = 0.24$) match $N^* = 4$ with
-        $|\Delta\kappa| = 0.01$&mdash;the closest match across all groups. 
-    </p>
-
-    <p>
-        The formal analogy chain is:
-        $\mathrm{Fix}(G) \leftrightarrow \mathcal{H}_{\partial}$ (boundary state),
-        $|\mathrm{orbits}(G)|$ $\leftrightarrow$ boundary degrees of freedom,
-        $d_{\min}^{\mathrm{orb}}$ $\leftrightarrow$ bulk reconstruction depth.
-        A falsifiable prediction&mdash;required before any physical claim is made&mdash;remains an open problem.
-    </p>
-
-    <!-- ─── SECTION XI ─── -->
-    <h2>XI. Conclusions</h2>
-
-    <p class="no-indent">We summarize the computational results of Phase 4 (EXP-08 to EXP-15):</p>
-
-    <ol>
-        <li><strong>Universal entropy invariance (RL3):</strong> All 13 tested finite groups produce
-            $\mathrm{Fix}(G) \subset \mathcal{F}$ with $\overline{\mathrm{Var}(H_d)} < 10^{-31}$.
-            Entropy invariance appears to be universal, not specific to the Klein group.</li>
-        <li><strong>Information action identity (RL4):</strong> The exact formula
-            $\mathcal{A}[M,G] = (n^2 - |\mathrm{orbits}(G)|)\cdot\log_2\sigma$ is verified
-            for all 14 groups. Action is maximized by fewest orbits, not largest order.</li>
-        <li><strong>Burnside bound violation (RL6):</strong> The conjecture $\kappa \geq 1/|G|$
-            is violated by certain groups, motivating a refined lower bound conjecture.</li>
-        <li><strong>Passive recovery scaling (RL2):</strong> Groups with $d_{\min}^{\mathrm{orb}} = 4$
-            achieve $\rho(t=1) \geq 99.6\%$, vs $96.0\%$ for $d_{\min}^{\mathrm{orb}} = 1$.</li>
-        <li><strong>Coherence time scaling (RL5):</strong> Moving from $d_{\min}^{\mathrm{orb}} = 2$
-            to $d = 4$ extends $t^*(90\%)$ from 3&ndash;6 to 9&ndash;11. Saturation occurs at $|G| \approx 8$.</li>
-        <li><strong>Local entropy stability (RL1):</strong> Klein group achieves lowest local entropy
-            fluctuation ($\mathrm{std} = 0.0293$) consistent with RL1-C1.</li>
-        <li><strong>Universal structural invariant (EXP-15):</strong> $d_{\min}^{\mathrm{orb}}$
-            predicts all four metrics with $|r| \in [0.82, 0.87]$.</li>
-        <li><strong>Holographic analogy (RL7):</strong> Sator $\kappa = 0.36 \approx 1/3 = \kappa_{\mathrm{holo}}(N=3)$.
-            All claims remain formal analogies pending a falsifiable prediction.</li>
-    </ol>
-
-    <div class="theorem-box">
-        <strong>Open Problems.</strong>
-        <ol>
-            <li>Prove Theorem RL3-T1 analytically: does every finite group action guarantee $\mathcal{F}$-membership?</li>
-            <li>Find the correct lower bound replacing the violated Burnside bound $\kappa \geq 1/|G|$.</li>
-            <li>Prove that $d_{\min}^{\mathrm{orb}}$ determines $\rho(t)$ via a closed-form expression.</li>
-            <li>Identify a physical (quantum mechanical) system where $d_{\min}^{\mathrm{orb}}$ plays the role of topological protection distance.</li>
-            <li>Formulate one falsifiable prediction connecting $\kappa_{\mathrm{sym}}$ to a holographic observable.</li>
-        </ol>
-    </div>
 
     <div class="references">
         <h2>References</h2>
         <ol>
-            <li>Fulber, D. H. M. <em>The Sator Square as a Zero-Entropy Symbolic Structure: Symmetry, Information Theory, and the Klein Group.</em> Tamesis Program (2026a). [Phase 1&ndash;3 paper]</li>
-            <li>Fulber, D. H. M. <em>Thermodynamic Time Reversal: Physics as Transition Dynamics.</em> Tamesis Treatise 02. DOI:10.5281/zenodo.18357364 (2026b).</li>
-            <li>Shannon, C. E. <em>A Mathematical Theory of Communication.</em> Bell System Technical Journal 27 (1948).</li>
+            <li>Fulber, D. H. M. <em>The Sator Square as a Zero-Entropy Symbolic Structure: Symmetry, Information Theory, and the Klein Group.</em> Tamesis Program (2026).</li>
             <li>Burnside, W. <em>Theory of Groups of Finite Order.</em> Cambridge University Press (1897).</li>
+            <li>Shannon, C. E. <em>A Mathematical Theory of Communication.</em> Bell System Technical Journal 27 (1948).</li>
             <li>Kitaev, A. <em>Fault-tolerant quantum computation by anyons.</em> Annals of Physics 303 (2003).</li>
-            <li>Jaynes, E. T. <em>Information Theory and Statistical Mechanics.</em> Physical Review 106 (1957).</li>
-            <li>Maldacena, J. <em>The large N limit of superconformal field theories and supergravity.</em> International Journal of Theoretical Physics 38 (1999).</li>
-            <li>Ryu, S., Takayanagi, T. <em>Holographic derivation of entanglement entropy from AdS/CFT.</em> Physical Review Letters 96, 181602 (2006).</li>
             <li>Cover, T. M., Thomas, J. A. <em>Elements of Information Theory.</em> Wiley (2006).</li>
-            <li>Zurek, W. H. <em>Decoherence, einselection, and the quantum origins of the classical.</em> Reviews of Modern Physics 75 (2003).</li>
         </ol>
     </div>
 
 </body>
-
 </html>
