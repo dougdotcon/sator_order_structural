@@ -287,7 +287,7 @@
 
     <div class="abstract">
         <span class="abstract-title">Abstract</span>
-        We assert that the action of a finite symmetry group $G$ over a symbolic grid $\Sigma^{n^2}$ directly induces structural redundancy, dimensional compression, reading-direction invariance, and passive error-recovery capabilities, generalizing properties historically observed in the Sator Square. We formalize these mechanisms over 13 finite groups and demonstrate that the magnitude of redundancy and robustness is fundamentally governed by $d_{\min}^{\mathrm{orb}}(G)$, the size of the smallest non-trivial orbit, rather than the overall group order $|G|$. We prove an exact identity for the information action $\mathcal{A}[M,G]$ and introduce non-trivial transition entropy to distinguish structurally rigid systems from weakly constrained ones. We measure passive structure recovery under an Isfet-Ma'at noise model, demonstrating empirical structural benefit against a trivial $(n^2-t)/n^2$ baseline. Finally, we frame the Sator Square not as an isolated mathematical anomaly, but as a minimum-complexity historical candidate belonging to this rigorous class of orbit-constrained structures.
+        We study how the action of a finite symmetry group $G$ over a symbolic grid $\Sigma^{n^2}$ induces structural redundancy, dimensional compression, reading-direction invariance, and passive recovery under noise. Motivated by the Sator Square, we formalize these mechanisms across finite group actions on square grids. We prove an exact identity for the information action $\mathcal{A}[M,G]$, determined by the number of orbits of $G$, and introduce transition entropy as a non-trivial diagnostic separating weakly constrained systems from structurally rigid ones. Computational experiments over representative finite groups provide evidence that baseline-corrected recovery is better predicted by $d_{\min}^{\mathrm{orb}}(G)$, the size of the smallest non-trivial orbit, than by the group order $|G|$. The Sator Square is thereby reframed as a minimum-complexity historical example of an orbit-constrained symbolic system rather than an isolated mathematical anomaly.
     </div>
 
     <!-- ─── SECTION I ─── -->
@@ -302,7 +302,7 @@
     </p>
 
     <p>
-        We systematically formalize the actions of finite groups (such as $\{e\}$, $\mathbb{Z}_2$, $\mathbb{Z}_4$, the Klein four-group, $D_4$, and $D_8$) on a square grid. We measure how these abstract symmetries collapse the entropy of the matrices, force invariance under transition metrics, and provide robust structural recovery purely via topological constraints, without invoking active classical error-correction mechanisms.
+        We systematically formalize the actions of finite groups (such as $\{e\}$, $\mathbb{Z}_2$, $\mathbb{Z}_4$, the Klein four-group, $D_4$, and $D_8$) on a square grid. We measure how these abstract symmetries collapse the entropy of the matrices, force invariance under transition metrics, and provide robust structural recovery purely via orbital constraints, without invoking active classical error-correction mechanisms.
     </p>
 
     <!-- ─── SECTION II ─── -->
@@ -386,8 +386,21 @@
     </div>
 
     <p>
-        In EXP-17, groups like $D_4$, $D_8$, and Klein $G_0$ forced $\mathrm{Var}(H_{\text{trans}}) \to 0$, indicating that not only the symbols, but their adjacency structures are rotationally/isotropically locked. Trivial and weak $\mathbb{Z}_2$ groups failed this strict constraint, showing measurable variance across directions. This effectively filters purely mathematically trivial groups from those producing deep topological rigidity.
+        In EXP-17, groups like $D_4$, $D_8$, and Klein $G_0$ forced $\mathrm{Var}(H_{\text{trans}}) \to 0$, indicating that not only the symbols, but their adjacency structures are rotationally/isotropically locked. Trivial and weak $\mathbb{Z}_2$ groups failed this strict constraint, showing measurable variance across directions. This effectively filters purely mathematically trivial groups from those producing deep orbital rigidity.
     </p>
+
+    <table>
+        <caption>Table II. Marginal vs Transition Entropy Variance (EXP-17, average over 500 matrices).</caption>
+        <tr>
+            <th>Group $G$</th>
+            <th>$\overline{\mathrm{Var}(H_{\text{freq}})}$</th>
+            <th>$\overline{\mathrm{Var}(H_{\text{trans}})}$</th>
+        </tr>
+        <tr><td>Trivial $\{e\}$</td><td>$\sim 0$ (trivial)</td><td>$2.9 \times 10^{-3}$</td></tr>
+        <tr><td>$\mathbb{Z}_2$ (T)</td><td>$\sim 0$ (trivial)</td><td>$3.5 \times 10^{-3}$</td></tr>
+        <tr><td>Klein $G_0$</td><td>$\sim 0$ (trivial)</td><td>$\approx 9.9 \times 10^{-4}$</td></tr>
+        <tr><td>$D_4$ (R90, T)</td><td>$\sim 0$ (trivial)</td><td>$0.0$</td></tr>
+    </table>
 
     <!-- ─── SECTION VI ─── -->
     <h2>VI. Passive Structural Recovery</h2>
@@ -423,11 +436,11 @@
     </div>
 
     <p>
-        Table II summarizes empirical recovery values and $d_{\min}^{\mathrm{orb}}$. Both $D_8$ ($|G|=16$) and $\mathbb{Z}_4$ ($|G|=4$) possess $d_{\min}^{\mathrm{orb}} = 4$, and consequently, both deliver virtually identical structural benefit $\delta\rho \approx +0.038$.
+        Table III summarizes empirical recovery values and $d_{\min}^{\mathrm{orb}}$. Both $D_8$ ($|G|=16$) and $\mathbb{Z}_4$ ($|G|=4$) possess $d_{\min}^{\mathrm{orb}} = 4$, and consequently, both deliver virtually identical structural benefit $\delta\rho \approx +0.038$.
     </p>
 
     <table>
-        <caption>Table II. The $d_{\min}^{\mathrm{orb}}$ parameter vs empirical benefit $\delta\rho(t=1)$.</caption>
+        <caption>Table III. The $d_{\min}^{\mathrm{orb}}$ parameter vs empirical benefit $\delta\rho(t=1)$.</caption>
         <tr>
             <th>Group $G$</th>
             <th>$|G|$</th>
@@ -454,18 +467,18 @@
     </p>
 
     <p>
-        This realization demystifies its existence over linguistic history: it is the simplest topological construction that supports simultaneous multi-directional reading coherence without requiring complex non-abelian group symmetries, which would be insurmountably sparse in natural language lexicons.
+        This realization demystifies its existence over linguistic history: it is the simplest group-action construction that supports simultaneous multi-directional reading coherence without requiring complex non-abelian group symmetries, which would be insurmountably sparse in natural language lexicons.
     </p>
 
     <!-- ─── SECTION IX ─── -->
     <h2>IX. Discussion and Future Extensions</h2>
 
     <p class="no-indent">
-        This computational and topological framework presents an abstraction of redundancy applicable to domains far removed from symbolic word matrices. While current evaluations deal strictly with the properties of arrays over a finite alphabet, future developments should extend these investigations into localized quantum physical structures and holography analogs.
+        This computational and formal framework presents an abstraction of redundancy originating in symbolic arrays over a finite alphabet. In future developments, these formalized orbit-induced properties may be compared, at a formal level, with localized quantum physical structures and holography analogs.
     </p>
 
     <p>
-        Particularly, under speculative physical analogies, $d_{\min}^{\mathrm{orb}}$ directly echoes the role of topological protection layers in stabilizer codes, and the structural density metric $\kappa$ mirrors boundary-bulk ratios inherent to discrete lattice variants of AdS/CFT holography. Validating any physical correspondence demands precise falsifiable mappings representing our next investigative phase.
+        Particularly, under speculative formal analogies, $d_{\min}^{\mathrm{orb}}$ mirrors the role of physical protection layers in stabilizer codes, and the structural density metric $\kappa$ resembles boundary-bulk ratios inherent to discrete lattice variants of AdS/CFT holography. Validating any physical correspondence demands precise falsifiable mappings, representing a distinct investigative phase.
     </p>
 
     <div class="references">
